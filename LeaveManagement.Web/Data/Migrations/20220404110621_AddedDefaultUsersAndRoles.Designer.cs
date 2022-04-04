@@ -4,6 +4,7 @@ using LeaveManagement.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagement.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220404110621_AddedDefaultUsersAndRoles")]
+    partial class AddedDefaultUsersAndRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,41 +108,37 @@ namespace LeaveManagement.Web.Data.Migrations
                         {
                             Id = "e0ef63a3-d590-4849-a1f3-dcd55520c29d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f107d1d-fdfc-4d53-a096-b68294eb0d69",
+                            ConcurrencyStamp = "0b6a4350-c1b2-46e3-a645-d907599ec1e6",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "dorotea.simunovic@hotmail.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Dorotea",
                             LastName = "Simunovic",
                             LockoutEnabled = false,
                             NormalizedEmail = "DOROTEA.SIMUNOVIC@HOTMAIL.COM",
-                            NormalizedUserName = "DOROTEA.SIMUNOVIC@HOTMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE77s+hMb+R/Bsg+FWxnZT/nWT37aaQzkzs/zgIl3k6OB0XPdGvA2aJON93pAmO7Fw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOjnmnJzVKwARJOdN7RSndZ28JdAyJzrzNRt/CoCOSBe4fqEIiUpXEJzAYNd84up7g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a873bbc-2daf-4940-ba37-289b939ec268",
-                            TwoFactorEnabled = false,
-                            UserName = "dorotea.simunovic@hotmail.com"
+                            SecurityStamp = "2ce64210-df20-4682-b26f-8c70d524cf36",
+                            TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "b71d9170-e714-473c-9a7f-9742e8c383f5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "382ac883-3d19-4aab-acfd-092247aace1f",
+                            ConcurrencyStamp = "79278b6e-0bd4-47ab-a458-107478d52704",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "email@email.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Obican",
                             LastName = "User",
                             LockoutEnabled = false,
                             NormalizedEmail = "EMAIL@EMAIL.COM",
-                            NormalizedUserName = "EMAIL@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKCy9GdMSLhvdc4YEwScbQA96pSJUzzhUtG99uanUmiRbshAUs1BkRgnNTIY5xeYBQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI42Z9BrYtychYChan4ccxtzDSDUTSwfK3FgKImdPghZ49MCOxUXIorMgN2QiWPHlw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "86b1276a-740b-473a-850d-064a1bc5ed75",
-                            TwoFactorEnabled = false,
-                            UserName = "email@email.com"
+                            SecurityStamp = "3ad4eecc-2330-47d3-b1b5-648317988ee1",
+                            TwoFactorEnabled = false
                         });
                 });
 
@@ -229,14 +227,14 @@ namespace LeaveManagement.Web.Data.Migrations
                         new
                         {
                             Id = "32b63cee-482f-460c-89a1-26aafba2d333",
-                            ConcurrencyStamp = "733b4e23-e74d-4c89-8531-2a6ad26c19f6",
+                            ConcurrencyStamp = "ba812933-d6d0-49f4-940b-de165d1dab51",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "62b63cee-482f-460c-89a1-26aafba2d336",
-                            ConcurrencyStamp = "d7e78f88-51cf-46de-94a5-2f967fc0b858",
+                            ConcurrencyStamp = "00eab499-f6fe-401a-a7e4-9da7b3472888",
                             Name = "User",
                             NormalizedName = "USER"
                         });
