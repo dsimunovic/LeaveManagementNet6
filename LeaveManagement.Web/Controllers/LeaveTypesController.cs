@@ -20,11 +20,13 @@ namespace LeaveManagement.Web.Controllers
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper mapper;
+        private readonly ILeaveAllocationRepository leaveAllocationRepository;
 
-        public LeaveTypesController(ILeaveTypeRepository repository, IMapper mapper)
+        public LeaveTypesController(ILeaveTypeRepository repository, IMapper mapper, ILeaveAllocationRepository leaveAllocationRepository)
         {
             this._leaveTypeRepository = repository;
             this.mapper = mapper;
+            this.leaveAllocationRepository = leaveAllocationRepository;
         }
 
         // GET: LeaveTypes
@@ -138,6 +140,14 @@ namespace LeaveManagement.Web.Controllers
         private async Task<bool> LeaveTypeExists(int id)
         {
             return await _leaveTypeRepository.Exists(id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AllocateLeave(int id)
+        {
+            await leaveAllocationRepository.LeaveAllocation(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
