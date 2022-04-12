@@ -7,9 +7,12 @@
       "destination": "wwwroot/lib/sweetalert/"
     },
     {
-      "provider": "cdnjs",
       "library": "font-awesome@6.1.0",
       "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/lib/jqueryui/"
     }
   ]
 }
