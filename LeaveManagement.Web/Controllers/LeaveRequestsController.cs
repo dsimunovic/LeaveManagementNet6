@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LeaveManagement.Web.Data;
-using LeaveManagement.Web.Models;
+using LeaveManagement.Data;
+using LeaveManagement.Common.Models;
 using AutoMapper;
-using LeaveManagement.Web.Contracts;
+using LeaveManagement.Application.Contracts;
 using Microsoft.AspNetCore.Authorization;
-using LeaveManagement.Web.Constants;
+using LeaveManagement.Common.Constants;
 
 namespace LeaveManagement.Web.Controllers
 {
@@ -21,12 +21,14 @@ namespace LeaveManagement.Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
         private readonly ILeaveRequestRepository leaveRequestRepository;
+        private readonly ILogger<LeaveRequestsController> logger;
 
-        public LeaveRequestsController(ApplicationDbContext context, IMapper mapper, ILeaveRequestRepository leaveRequestRepository)
+        public LeaveRequestsController(ApplicationDbContext context, IMapper mapper, ILeaveRequestRepository leaveRequestRepository, ILogger<LeaveRequestsController> logger)
         {
             _context = context;
             this.mapper = mapper;
             this.leaveRequestRepository = leaveRequestRepository;
+            this.logger = logger;
         }
 
         // GET: LeaveRequests
@@ -65,6 +67,7 @@ namespace LeaveManagement.Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.LogError(ex,"Error approving request");
                 throw;
             }
 
@@ -91,6 +94,7 @@ namespace LeaveManagement.Web.Controllers
                 await leaveRequestRepository.CancelLeaveRequest(id);
             } catch (Exception ex)
             {
+                logger.LogError(ex, "Error Cancel request");
                 throw;
             }
             return RedirectToAction(nameof(MyLeave));
@@ -169,6 +173,8 @@ namespace LeaveManagement.Web.Controllers
                     }
                     else
                     {
+                        logger.LogError("Error Edit request");
+
                         throw;
                     }
                 }
